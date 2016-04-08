@@ -1,0 +1,244 @@
+%%This is a very basic article template.
+%%There is just one section and two subsections.
+\documentclass{report}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{graphicx}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{multirow}
+\usepackage{caption}
+\doublespacing
+
+\usepackage{geometry}
+\geometry{margin=1.1in}
+
+
+
+
+\let\oldnl\nl% Store \nl in \oldnl
+\newcommand{\nonl}{\renewcommand{\nl}{\let\nl\oldnl}}% Remove line number for one line
+\SetNlSty{textbf}{}{.}
+
+\newcommand{\declareAlgo}[1]{\refstepcounter{algocf}\label{#1}} %
+
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{problem}{Problem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+\newcommand{\commentOut}[1]{}
+
+
+\makeatletter
+\newcommand{\RemoveAlgoNumber}{\renewcommand{\fnum@algocf}{\AlCapSty{\AlCapFnt\algorithmcfname}}}
+\newcommand{\RevertAlgoNumber}{\algocf@resetfnum}
+\makeatother
+
+
+\newcommand{\thesisTitle}{{\bf Data Structures and Algorithms for the\\
+Identification of Biological Patterns}} 
+\newcommand{\thesisAuthorName}{Marius Nicolae}
+
+\title{\thesisTitle}
+
+
+\author{\thesisAuthorName{}\\ marius.nicolae@engr.uconn.edu\\
+Major Advisor: Prof. Sanguthevar Rajasekaran\\
+Associate Advisors: Prof. Ion M\u{a}ndoiu and Prof. Yufeng Wu\\
+Department of Computer Science and Engineering, University of Connecticut}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+
+
+\thispagestyle{empty}
+\begin{center}
+\begin{minipage}{\linewidth}
+    \centering
+%Thesis title
+    {\uppercase{\Large \thesisTitle \par}}
+    %\vspace{1cm}
+%Author's name
+    {\Large \thesisAuthorName, PhD\par}
+    %\vspace{1cm}
+
+    {\Large University of Connecticut, 2016\par}
+\end{minipage}
+\end{center}
+\vspace{1cm}
+
+
+%location of RNA degradation signals, alternative splicing sites, etc.
+
+%\begin{abstract}
+This thesis studies the following problems:
+
+{\bf 1. Planted Motif Search.} Discovering patterns in biological
+sequences is a crucial process that has resulted in the determination of open
+reading frames, gene promoter elements, intron/exon splicing sites, SH RNAs,
+etc. We study the $(\ell,d)$ motif search problem or Planted Motif Search (PMS). 
+PMS receives as input $n$ strings and two integers $\ell$ and $d$.
+It returns all sequences $M$ of length $\ell$ that occur in each input string, 
+where each occurrence differ from $M$ in at most $d$ positions.
+Another formulation is quorum PMS (qPMS), where $M$ appears in at least 
+$q\%$ of the strings. We developed qPMS9, an efficient parallel exact 
+qPMS algorithm for DNA and protein datasets. 
+
+
+{\bf 2. Suffix Array Construction.} The suffix array is a data
+structure that finds numerous applications in string processing problems for both
+linguistic texts and biological data. The suffix array consists of the sorted
+suffixes of a string. There are several linear time suffix array construction algorithms known in the literature.
+However, one of the fastest algorithms in practice has a worst case
+run time of $O(n^2)$. We developed an efficient algorithm called RadixSA
+that has a worst case run time of  $O(n\log{n})$ and is one of the fastest
+algorithms to date. RadixSA introduces an idea that may find independent
+applications as a speedup technique for other algorithms.
+
+        
+{\bf 3. Pattern Matching with Mismatches}. We consider several
+variants of the pattern matching with mismatches problem. Given a text $T=t_1
+t_2\cdots t_n$ and a pattern $P=p_1p_2\cdots p_m$, we investigate the following problems: 
+1) {\em Pattern matching with mismatches:} for every alignment $i, 1\leq i \leq
+n-m+1$ output the distance between $P$ and $t_i t_{i+1}\cdots t_{i+m-1}$, and 
+2) {\em Pattern matching with $k$ mismatches:} output those alignments $i$
+where the distance is at most $k$. The distance metric used is the Hamming
+distance. Variants of these problems allow for wild cards in
+the text or the pattern. For these problems we offer novel deterministic,
+randomized and approximation algorithms.
+
+Source code relevant to these results is available at
+https://github.com/mariusmni/.
+%\end{abstract}
+\clearpage
+
+
+\pagenumbering{Roman} 
+
+%\thispagestyle{empty}
+\begin{center}
+\begin{minipage}{\linewidth}
+    \centering
+%Thesis title
+    {\Large \thesisTitle \par}
+    \vspace{1cm}
+%Author's name
+    {\Large \thesisAuthorName\par}
+    \vspace{2cm}
+    {\Large Dipl. Ing., Politehnica University of Bucharest, 2009\par}
+    {\Large M.Sc., University of Connecticut, 2011\par}
+    \vspace{5cm}
+
+    {\Large A Dissertation\par}
+    {\Large Submitted in Partial Fulfillment of the\par}
+    {\Large Requirements for the Degree of\par}
+    {\Large Doctor of Philosophy\par}
+    {\Large at the\par}
+    {\Large University of Connecticut\par}
+    \vspace{1cm}
+    {\Large 2016\par}
+\end{minipage}
+\end{center}
+\clearpage
+
+
+%\thispagestyle{empty}
+\begin{center}
+\begin{minipage}{\linewidth}
+    \centering
+%Thesis title
+    {\Large APPROVAL PAGE \par}
+    %\vspace{1cm}
+    {\Large Doctor of Philosophy Dissertation \par}
+    \vspace{1cm}
+    {\Large \thesisTitle \par}
+    \vspace{2cm}
+%Author's name
+    {\Large Presented by\par}
+    {\Large \thesisAuthorName\par}
+    \vspace{3cm}
+    \begin{tabular}{r l l}
+    {\Large Major Advisor} &
+    \multicolumn{2}{l}{\noindent\makebox[4in]{\hrulefill}}\\
+                           &\makebox[1cm] &{\Large Prof. Sanguthevar
+                           Rajasekaran}\\
+                           \\
+                           \\
+    {\Large Associate Advisor} & 
+    \multicolumn{2}{l}{\noindent\makebox[4in]{\hrulefill}}\\
+                           & &{\Large Prof. Ion M\u{a}ndoiu}\\
+                           \\
+                           \\
+    {\Large Associate Advisor} & 
+    \multicolumn{2}{l}{\noindent\makebox[4in]{\hrulefill}}\\
+                           & &{\Large Prof. Yufeng Wu}\\
+    \end{tabular}
+    \vspace{1cm}
+
+    {\Large University of Connecticut\par}
+    {\Large 2016\par}
+\end{minipage}
+\end{center}
+\clearpage
+
+
+\chapter*{Acknowledgments}
+This thesis is based on the following publications: \cite{NRPMS14},
+\cite{NRPMS15}, \cite{RNSA14}, \cite{NRKM15} and \cite{NRKM16}. I would like to
+thank my major advisor, Professor Sanguthevar Rajasekaran, who is also a
+co-author on the above papers, for his significant contribution to this thesis
+and for the experience of working together for the past few
+years.
+I would also like to thank my associate advisors Professor Ion M\u{a}ndoiu and
+Professor Yufeng Wu for their support and suggestions. I thank also 
+Professor Chun-Hsi (Vincent) Huang, Professor Mukul Bansal and Dr. Soumitra
+Pal for their participation in the review of this work. I am grateful to
+my colleagues from the Applied Algorithms Lab at the Booth Center for Advanced
+Technology for the collaborations and sharing of ideas and to
+the many excellent teachers in the Computer Science Department at UConn
+whose classes I was privileged to attend. 
+
+I would like to acknowledge the
+many teachers and colleagues that have influenced me in my undergraduate and
+high school years.
+In particular, my first steps into computer science were guided by Professor
+Doru Popescu Anastasiu from Radu Greceanu National College in Slatina, Romania.
+He was also the one who recommended the UConn grad school program to me.
+I am grateful for many other influences from professors and former
+students training the Romanian National Informatics Olympic team of which I was
+a part in my senior high school years. Finally, I would like to thank my family
+and friends for their patience and support while I undertook the grad school
+program many miles away.
+
+ This work has been supported in part by the following grants:
+NSF 0829916, NSF 1447711 and NIH R01-LM010101.
+
+\tableofcontents
+
+\listoffigures
+\listoftables
+\listofalgorithms
+
+\cleardoublepage\pagenumbering{arabic}
+
+\chapter{Planted Motif Search}
+\input{pms.tex}
+
+\chapter{Suffix Array Construction}
+\input{sa.tex}
+
+\chapter{Pattern Matching With Mismatches}
+\input{kmis.tex}
+
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{plain}
+\bibliography{pms8-references,pms9-references,sa-references,kmis-references,our-references} 
+
+
+\end{document}
